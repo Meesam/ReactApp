@@ -1,0 +1,9 @@
+{
+  "WEB_PORT":8080,
+  "REDIS_PORT":6379,
+  "DATABASENAME":"Security_Value_Map",
+  "USERNAME":"postgres",
+  "PASSWORD":"meesam",
+  "DATABASEHOST":"localhost",
+  "DATABASEENGINE":"postgres"
+}

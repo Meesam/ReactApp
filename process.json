@@ -1,0 +1,10 @@
+{
+  "apps" :[
+    {
+      "name": "Security Value Map",
+      "script": "server.js",
+      "exec_interpreter" : "babel-node",
+      "exec_mode"        : "fork",
+      "instances": 4
+    }]
+}
