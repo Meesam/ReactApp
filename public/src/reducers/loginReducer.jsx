@@ -1,5 +1,5 @@
 import { ON_LOGIN, ON_LOGIN_SUCCESS , ON_LOGIN_FAILURE , RESET_LOGIN , USER_FROM_TOKEN, USER_FROM_TOKEN_SUCCESS,
-  USER_FROM_TOKEN_FAILURE , RESET_TOKEN , LOGOUT_USER,INVALID_LOGIN} from '../actions/login.jsx';
+  USER_FROM_TOKEN_FAILURE , RESET_TOKEN , LOGOUT_USER,INVALID_LOGIN,SET_USER} from '../actions/login.jsx';
 
 const INITIAL_STATE = {user: null, status:null, error:null, loading: false};
 
@@ -38,6 +38,9 @@ export default function(state = INITIAL_STATE, action) {
 
     case LOGOUT_USER:
       return {...state, user:null, status:'logout', error:null, loading: false};
+
+    case SET_USER:
+      return { ...state, user: action.payload, status:'authenticated', error:null, loading: false};
     
     default:
     return state;

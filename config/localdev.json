@@ -5,5 +5,6 @@
   "USERNAME":"postgres",
   "PASSWORD":"meesam",
   "DATABASEHOST":"localhost",
-  "DATABASEENGINE":"postgres"
+  "DATABASEENGINE":"postgres",
+  "JWT_SECRET":"meesam"
 }

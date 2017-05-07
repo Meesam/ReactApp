@@ -5,6 +5,7 @@ import App from '../components/App.jsx';
 
 const mapDispatchToProps = (dispatch) => {
   return {
+
     loadUserFromToken: () => {
       let token = localStorage.getItem('jwtToken');
       if(!token || token === '') {

@@ -14,12 +14,15 @@ import '../styles/css/AdminLTE.css';
 import '../styles/css/skins/skin-blue.css';
 import Authenticated from './containers/authenticationContainer.jsx';
 import AdminDashBoard from './pages/adminDashBoardIndex.jsx';
+import setAuthorizationToken from './utils/setAuthorizationToken';
 
 //for React Developer Tools
 window.React = React;
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
+console.log('localStorage ' , localStorage.jwtToken);
+setAuthorizationToken(localStorage.jwtToken);
 
 render(
     <Provider store={store}>

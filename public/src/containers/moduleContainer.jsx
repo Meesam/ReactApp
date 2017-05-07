@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { logoutUser,onSetUser } from '../actions/login.jsx';
 import ModuleComponent from '../components/moduleComponent.jsx';
 
 const  mapStateToProps=(state)=>{
@@ -11,11 +12,10 @@ const  mapStateToProps=(state)=>{
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    logout: () => {
-      localStorage.removeItem('jwtToken');
-      dispatch(logoutUser());
+    setUser:()=>{
+      dispatch(onSetUser(localStorage.jwtToken));
     }
   }
 }
 
-export default connect(mapStateToProps, null)(ModuleComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ModuleComponent);

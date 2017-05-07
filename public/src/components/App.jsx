@@ -13,7 +13,6 @@ const styles={
 
 class App extends Component {
   componentWillMount() {
-    this.props.loadUserFromToken();
     setAuthorizationToken(localStorage.JwtToken);
   }
 

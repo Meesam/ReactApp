@@ -1,5 +1,6 @@
 import axios from 'axios';
 import URL from '../../../appconfig';
+import jwt from 'jsonwebtoken';
 
 //Login
 export const ON_LOGIN="ON_LOGIN";
@@ -13,6 +14,7 @@ export const USER_FROM_TOKEN = 'USER_FROM_TOKEN';
 export const USER_FROM_TOKEN_SUCCESS = 'USER_FROM_TOKEN_SUCCESS';
 export const USER_FROM_TOKEN_FAILURE = 'USER_FROM_TOKEN_FAILURE';
 export const RESET_TOKEN = 'RESET_TOKEN';
+export const SET_USER="SET_USER"
 
 // Logout User
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -30,11 +32,18 @@ export function onLogin(formValues) {
   };
 }
 
-export function onLoginSuccess(user){
-	return{
+export function onLoginSuccess(token){
+  return{
 		type:ON_LOGIN_SUCCESS,
-		payload:user
+		payload:jwt.decode(token)
 	}
+}
+
+export function onSetUser(token) {
+  return{
+    type:SET_USER,
+    payload:jwt.decode(token)
+  }
 }
 
 export function onLoginFailure(error){

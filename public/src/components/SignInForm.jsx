@@ -34,9 +34,9 @@ const validateAndSignInUser = (values, dispatch) => {
         dispatch(onInvalidLogin("Invalid Login details"));
 
       } else {
-        // localStorage.setItem('jwtToken', result.payload.data.token);
-        // setAuthorizationToken(result.payload.data.token);
-         dispatch(onLoginSuccess(result.payload.data));
+         localStorage.setItem('jwtToken', result.payload.data.token);
+         setAuthorizationToken(result.payload.data.token);
+         dispatch(onLoginSuccess(result.payload.data.token));
       }
     });
 };
@@ -49,12 +49,15 @@ class SignInForm extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user.status === 'authenticated' && !nextProps.user.error) {
+    if (nextProps.user.user) {
       this.context.router.push('/adminDashBoard');
      }
-     if (nextProps.user.status === 'invalidLogin') {
+     else if (nextProps.user.status === 'invalidLogin') {
        this.context.router.push('/login');
      }
+     else {
+      this.context.router.push('/login');
+    }
   }
 
   renderInvalidLoginMsg(status){

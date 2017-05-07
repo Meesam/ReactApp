@@ -8,13 +8,14 @@ export default class UserApi{
   }
 
   getAllroutes() {
-    this.apiRoutes.post('/login', function (req, resp, next) {
+    this.apiRoutes.post('/login', (req, resp, next)=> {
       return doLogin(req.body)
         .then(function (response) {
            if(response==null){
              resp.json("Invalid credential");
            } else {
-             resp.json(response.dataValues);
+             console.log(response);
+             resp.json(response);
            }
         })
         .catch(function (error) {

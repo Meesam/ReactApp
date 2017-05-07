@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../actions/login.jsx';
+import { logoutUser,onSetUser } from '../actions/login.jsx';
 import Header from '.././staticComponents/header.jsx';
 
 const  mapStateToProps=(state)=>{
@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     logout: () => {
       localStorage.removeItem('jwtToken');
       dispatch(logoutUser());
+    },
+    setUser:()=>{
+      dispatch(onSetUser(localStorage.jwtToken));
     }
   }
 }

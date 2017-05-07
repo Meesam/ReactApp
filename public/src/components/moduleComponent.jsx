@@ -6,10 +6,14 @@ export default class Modules extends Component{
     super(props);
   }
 
+  componentWillMount(){
+    this.props.setUser();
+  }
+
   render(){
     console.log('props are ' , this.props);
     const {authenticatedUser,user}=this.props
-   if(authenticatedUser){
+   if(user.user){
      return(
        <aside className="main-sidebar">
          <section className="sidebar">
@@ -18,7 +22,7 @@ export default class Modules extends Component{
                <img src="styles/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
              </div>
              <div className="pull-left info">
-               <p>{user.user.FirstName}</p>
+               <p>{user.user.name}</p>
                <a href="#"><i className="fa fa-circle text-success"></i> Online</a>
              </div>
            </div>

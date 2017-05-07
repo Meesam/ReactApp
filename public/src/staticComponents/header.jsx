@@ -7,11 +7,16 @@ export default class Header extends Component{
   static contextTypes = {
     router: PropTypes.object
   };
+
+  componentWillMount(){
+     this.props.setUser();
+  }
+
   render(){
     const {authenticatedUser,user}=this.props;
     console.log('user details are  ' + JSON.stringify(user.user));
 
-    if(authenticatedUser){
+    if(user.user){
       return(
         <header className="main-header">
           <a href="index2.html" className="logo">
@@ -107,7 +112,7 @@ export default class Header extends Component{
                     <li className="user-header">
                       <img src="styles/img/user2-160x160.jpg" className="img-circle" alt="User Image" />
                       <p>
-                        {user.user.FirstName} {user.user.LastName}
+                        {user.user.name}
                       </p>
                     </li>
                     <li className="user-footer">
